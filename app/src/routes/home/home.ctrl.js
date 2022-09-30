@@ -20,17 +20,16 @@ const process = {
     // const userStorage = new UserStorage();
     // console.log(userStorage.users);
     // 바로 불러오기
-    console.log(UserStorage.getUsers());
+    const users = UserStorage.getUsers("id", "psword");
 
     const response = {};
-    // const response = {};
-    // if (users.id.includes(id)) {
-    //   const idx = users.id.indexOf(id);
-    //   if (users.psword[idx] === psword) {
-    //     response.success = true;
-    //     return res.json();
-    //   }
-    // }
+    if (users.id.includes(id)) {
+      const idx = users.id.indexOf(id);
+      if (users.psword[idx] === psword) {
+        response.success = true;
+        return res.json(response);
+      }
+    }
 
     response.success = false;
     response.msg = "로그인에 실패하셨습니다.";

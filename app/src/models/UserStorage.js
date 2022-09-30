@@ -7,12 +7,20 @@ class UserStorage {
     name: ["우리밋", "나개발", "김팀장"],
   };
 
+  //   static getUsers() {
+  //     return this.#users;
+  //   }
+
   static getUsers(...fields) {
     const users = this.#users;
     const newUsers = fields.reduce((newUsers, field) => {
-      console.log(newUsers, field);
-    });
-    return;
+      if (users.hasOwnProperty(field)) {
+        newUsers[field] = users[field];
+      }
+      return newUsers;
+    }, {});
+    // console.log(newUsers);
+    return newUsers;
   }
 }
 
